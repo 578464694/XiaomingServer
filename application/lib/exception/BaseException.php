@@ -2,8 +2,9 @@
 
 namespace app\lib\exception;
 
+use think\Exception;
 
-class BaseException
+class BaseException extends Exception
 {
     protected $code = 400;
     protected $msg = '参数错误';
@@ -13,7 +14,7 @@ class BaseException
      * 获得错误状态码
      * @return int
      */
-    public function getCode() {
+    public function getHttpCode() {
         return $this->code;
     }
 
@@ -49,13 +50,13 @@ class BaseException
      * 返回错误信息
      * @return array
      */
-//    public function getErrorInfo() {
-//        $error[] = [
-//            'code' => $this->code,
-//            'msg' => $this->msg,
-//            'errorCode' => $this->errorCode
-//        ];
-//        return $error;
-//    }
+    public function getErrorInfo() {
+        $error[] = [
+            'code' => $this->code,
+            'msg' => $this->msg,
+            'error_code' => $this->errorCode
+        ];
+        return $error;
+    }
 
 }

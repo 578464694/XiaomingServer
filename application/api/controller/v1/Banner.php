@@ -9,6 +9,7 @@
 namespace app\api\controller\v1;
 use app\api\validate\IDMustBePositiveInt;
 use app\api\model\Banner as BannerModel;
+use app\lib\exception\BannerMissException;
 use think\Exception;
 
 class Banner
@@ -22,14 +23,11 @@ class Banner
     public function getBanner($id)
     {
         (new IDMustBePositiveInt())->goCheck();
-//        $banner = BannerModel::getBannerByID($id);
-            // 封住错误信息
-//            $err = [
-//                'error_code' => 10001,
-//                'msg' => $ex->getMessage()
-//            ];
-//            return json($err,400);  //json 第二个参数为 HTTP 的状态
-//        return $banner;
-//        return 'xxx';
+        $banner = BannerModel::getBannerByID($id);
+        if(!$banner) {
+            throw new BannerMissException();
+        }
+        return $banner;
     }
+
 }
