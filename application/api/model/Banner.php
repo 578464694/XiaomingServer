@@ -6,9 +6,12 @@ use think\Model;
 
 class Banner extends Model
 {
+    public function items() {
+        return $this->hasMany('BannerItem', 'banner_id', 'id');
+    }
     public static function getBannerByID($id)
     {
-        //TODO::根据 ID 返回 banner 相应信息
-        return null;
+        $banner = self::with('items', 'items.img')->find($id);
+        return $banner;
     }
 }
