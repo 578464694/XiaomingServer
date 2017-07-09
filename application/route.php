@@ -12,4 +12,5 @@
 // 路由访问三段式，模块名/控制器名/方法名
 use think\Route;
 
-Route::get('api/v1/banner/:id','api/v1.Banner/getBanner');  //api 代表接口，v1 是版本号
+//api 代表接口，:version 是版本号，例如：v1，v2，v3...
+Route::get('api/:version/banner/:id','api/:version.Banner/getBanner');
