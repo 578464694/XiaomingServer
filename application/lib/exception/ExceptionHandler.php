@@ -28,7 +28,7 @@ class ExceptionHandler extends Handle
             else
             {
                 $this->code = 500;
-                $this->msg = '服务器内部错误，我不想告诉你';
+                $this->msg = '服务器内部错误，我不想告诉你'.$e->getMessage();
                 $this->error_code = 999;
                 $this->recordErrorLog($e);
             }

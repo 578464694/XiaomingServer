@@ -62,9 +62,9 @@ class BaseException extends Exception
      * @msg     错误概述
      * @errorCode 错误码
      */
-    public function setErrorInfo($code, $msg, $errorCode) {
+    public function setErrorInfo($code, $message, $errorCode) {
         $this->code = $code;
-        $this->msg = $msg;
+        $this->message = $message;
         $this->errorCode = $errorCode;
     }
 
@@ -75,7 +75,7 @@ class BaseException extends Exception
     public function getErrorInfo() {
         $error[] = [
             'code' => $this->code,
-            'msg' => $this->msg,
+            'message' => $this->message,
             'error_code' => $this->errorCode
         ];
         return $error;

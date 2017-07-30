@@ -6,6 +6,7 @@ use think\Model;
 
 class BaseModel extends Model
 {
+    protected $autoWriteTimestamp = true;
     protected function prefixImgUrl($value, $data) {
         $finalUrl = $value;
         if($data['from'] == 1)
